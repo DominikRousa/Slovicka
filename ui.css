@@ -40,9 +40,12 @@ button{
     margin: 10vh 15vh;
     display: flex;
     flex-wrap: wrap;
+    justify-content: space-evenly;
+    gap: 15px;
 }
 
 .card {
+    margin-top: 4vh;
     overflow: visible;
     width: 190px;
     height: 254px;
