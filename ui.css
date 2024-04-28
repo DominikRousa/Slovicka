@@ -131,6 +131,7 @@ button{
     display: flex;
     align-items: center;
     overflow: hidden;
+    flex-direction: column;
 }
 
 .front-content .badge {

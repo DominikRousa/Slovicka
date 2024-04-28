@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', function () {
   displayCards();
 });
 
-function displayCards(english, czech) {
+function displayCards(english, czech, explanation) {
   let cards = getCards();
   let cardsContainer = document.getElementById('cardsContainer');
   cardsContainer.innerHTML = '';
@@ -21,6 +21,8 @@ function displayCards(english, czech) {
           <div class="front">
             <div class="front-content">
               <strong>${item.czech}</strong>
+              <br><br><br><br><br>
+              <p>${item.explanation}</p>
             </div>
           </div>
         </div>
@@ -34,24 +36,30 @@ function displayCards(english, czech) {
 function addItem() {
   let englishInput = document.getElementById("englishTranslate").value;
   let czechInput = document.getElementById('czechTranslate').value;
+  let explanationInput = document.getElementById('explanation').value;
   let englishValue = englishInput.trim();
   let czechValue = czechInput.trim();
+  let explanationValue = explanationInput.trim();
 
 
   if (!englishValue) {
-    alert("Prosím, zadejte název položky.");
+    alert("Prosím, zadejte text");
     return;
   }
   if (!czechValue) {
-    alert("Prosím, zadejte název položky.");
+    alert("Prosím, zadejte text.");
+    return;
+  }
+  if (!explanationValue) {
+    alert("Prosím, zadejte text");
     return;
   }
 
   let cards = getCards();
-  cards.push({ english: englishValue, czech: czechValue });
+  cards.push({ english: englishValue, czech: czechValue, explanation: explanationValue });
   localStorage.setItem('translateCards', JSON.stringify(cards));
   englishInput.value = "";
-  displayCards(englishValue, czechValue);
+  displayCards(englishValue, czechValue, explanationValue);
 }
 
 function deleteItem(index) {
